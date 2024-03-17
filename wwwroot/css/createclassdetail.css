@@ -1,0 +1,433 @@
+.maincontent{
+    position: relative;
+    background-color: #fff;
+    border-radius: 40px;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.topics h1{
+    text-align: center;
+    margin:30px 0 10px 0;
+}
+
+.form-create{
+    display: grid;
+    grid-template-columns: 55% 45%;
+    justify-items: center;
+}
+
+.back{
+    margin: 10px;
+}
+.back_button{
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    color:#4AA8B7;
+    transition: 0.25s ease-in-out; 
+}
+.back_button:hover{
+    color: #d7f8fd;
+    transition: 0.3s;
+    transform: scale(1.035);
+}
+
+.input{
+    width: 100%;
+    padding: 0.2rem 1rem;
+    display: block;
+    border: 3px solid #FFBE71;
+    border-radius: 12px;
+    box-shadow: gainsboro 3px 3px 3px;
+    height: 40px;
+    position: relative;
+    outline: none;
+    margin-top: 10px;
+    transition: 0.25s ease-in-out;
+    
+}
+.input:hover , input:focus{
+    width: 100%;
+    display: block;
+    border: 3px solid #FFBE71;
+    background-color: #d7f8fd;
+    box-shadow: #c09055 2px 2px;
+    border-radius: 10px;
+    height: 40px;
+    transform: scale(1.035);
+}
+
+.description textarea{
+    width: 100%;
+    display: block;
+    border-color: #FFBE71;
+    border-width: 0.18rem;
+    border-radius: 0.75rem;
+    height: 8rem;
+    position: relative;
+    resize: none;
+    transition: 0.25s ease-in-out;
+}
+.description textarea:hover , textarea:focus{
+    width: 100%;
+    display: block;
+    border-color: #FFBE71;
+    background-color: #d7f8fd;
+    box-shadow: #c09055 0.18rem 0.18rem 0.18rem;
+    border-width: 0.18rem;
+    border-radius: 0.63rem;
+    height: 8rem;
+    position: relative;
+    resize: none;
+    transform: scale(1.035);
+}
+.description textarea{
+    padding: 1rem 1rem;
+    width: 100%;
+    display: block;
+    border-color: #FFBE71;
+    border-width: 3px;
+    border-radius: 12px;
+    height: 18rem;
+    resize: none;
+    position: relative;
+}
+.description textarea:hover{
+    width: 100%;
+    display: block;
+    border-color: #FFBE71;
+    border-width: 3px;
+    border-radius: 10px;
+    height: 18rem;
+    resize: none;
+    position: relative;
+}
+
+.formleft{
+    grid-column: 1;
+    width: 80%;
+    position: relative;
+}
+
+.formright{
+    grid-column: 2;
+    width: 80%;
+}
+
+.classname{
+    width: auto;
+    margin: 25px;
+
+}
+
+.subject{
+    margin: 25px;
+    
+}
+
+.description{
+    margin: 25px;
+}
+
+.details{
+    margin: 25px;
+}
+.location{
+    margin: 25px;
+}
+
+#map-container {
+    height: 18rem;
+    width: 100%;
+    margin: 8px 0;
+    border: 3px solid #FFBE71 ;
+    border-radius: 40px;
+    overflow: hidden;
+}
+  
+#map {
+    height: 100%;
+    width: 100%;
+}
+
+.start{
+    margin: 25px;
+}
+
+.start label {
+    display: block;
+    margin: 0;
+    margin-bottom: 0;
+    font:
+      1rem ;
+}
+  
+
+
+.expnoti{
+    margin: 25PX;
+}
+.expnoti label {
+    display: block;
+    margin: 0;
+    margin-bottom: 0;
+    font:
+      1rem ;
+}
+  
+
+.maxpeople {
+    margin: 25px;
+    
+}
+.btn{
+    text-align: right;
+    margin: 20px 0;
+    
+}
+.btn button {
+    background-color: #FFBE71;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    padding: 10px 20px;
+    box-shadow: gainsboro 2px 2px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    transition: 0.25s ease-in-out; 
+}
+.btn button:hover{
+    background-color: #d7f8fd;
+    border: none;
+    border-radius: 10px;
+    color: black;
+    box-shadow: #4AA8B7 2px 2px 2px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+@media screen  and (max-width: 785px){
+    .topics div{
+        display: none;
+    }
+    
+}
+
+@media screen and (max-width: 785px) {
+    .maincontent{
+        position: relative;
+        background-color: #fff;
+        border-top-left-radius: 40px;
+        border-top-right-radius: 40px;
+        padding: 1.8rem;
+        min-height: 100vh;
+    }  
+    
+    .topics h1{
+        text-align: center;
+        margin:1.8rem 0 0.625rem 0;
+    }
+    .topics div{
+        display: none;
+    }
+    .form-create{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+    }
+    
+    
+    .input{
+        width: 98%;
+        display: block;
+        border: 0.18rem solid #FFBE71;
+        border-radius: 0.75rem;
+        box-shadow: gainsboro 0.18rem 0.18rem 0.18rem;
+        height: 2.5rem;
+        position: relative;
+        outline: none;
+        margin-top: 0.5rem;
+        transition: 0.25s ease-in-out;
+        
+    }
+    .input:hover , input:focus{
+        width: 98%;
+        display: block;
+        border: 0.18rem solid #FFBE71;
+        background-color: #d7f8fd;
+        box-shadow: #c09055 0.18rem 0.18rem 0.18rem;
+        border-radius: 0.63rem;
+        height: 2.5rem;
+        transform: scale(1.035);
+    }
+    
+    .description textarea{
+        width: 98%;
+        display: block;
+        border-color: #FFBE71;
+        border-width: 0.18rem;
+        border-radius: 0.75rem;
+        height: 8rem;
+        position: relative;
+        resize: none;
+        transition: 0.25s ease-in-out;
+    }
+    .description textarea:hover , textarea:focus{
+        width: 98%;
+        display: block;
+        border-color: #FFBE71;
+        background-color: #d7f8fd;
+        box-shadow: #c09055 0.18rem 0.18rem 0.18rem;
+        border-width: 0.18rem;
+        border-radius: 0.63rem;
+        height: 8rem;
+        position: relative;
+        resize: none;
+        transform: scale(1.035);
+    }
+    .details textarea{
+        width: 98%;
+        display: block;
+        border-color: #FFBE71;
+        border-width: 0.18rem;
+        border-radius: 0.75rem;
+        height: 8rem;
+        resize: none;
+        position: relative;
+    }
+    .details textarea:hover{
+        width: 98%;
+        display: block;
+        border-color: #FFBE71;
+        background-color: #d7f8fd;
+        box-shadow: #c09055 0.18rem 0.18rem 0.18rem;
+        border-width: 0.18rem;
+        border-radius: 0.63rem;
+        height: 8rem;
+        position: relative;
+        resize: none;
+        transform: scale(1.035);
+    }
+    
+    .formleft{
+        grid-column: 1;
+        width: 80%;
+    }
+    
+    .formright{
+        grid-column: 2;
+        width: 80%;
+    }
+    
+    .classname{
+        margin: 1.6rem;
+    
+    }
+    
+    .subject{
+        margin: 1.6rem;
+        
+    }
+    
+    .description{
+        margin: 1.6rem;
+    }
+    
+    .details{
+        margin: 1.6rem;
+    }
+    .location{
+        margin: 1.6rem;
+    }
+    
+    #map-container {
+        height: 13.5rem;
+        width: 90%;
+        margin: 0.5rem auto;
+        border: 0.18rem solid #FFBE71 ;
+        border-radius: 2.5rem;
+        overflow: hidden;
+    }
+      
+    #map {
+        height: 100%;
+        width: 100%;
+    }
+    
+    .start{
+        margin: 1.6rem;
+    }
+    
+    .start label {
+        display: block;
+        margin: 0;
+        margin-bottom: 0;
+        font:
+          1rem ;
+    }
+      
+    
+    
+    .expnoti{
+        margin: 25PX;
+    }
+    .expnoti label {
+        display: block;
+        margin: 0;
+        margin-bottom: 0;
+        font:
+          1rem ;
+    }
+      
+    
+    .maxpeople {
+        margin: 1.6rem;
+        
+    }
+    .btn{
+        text-align: center;
+        margin: 20px;
+        
+    }
+    
+
+    .btn button {
+        width: 50%;
+        background-color: #FFBE71;
+        border: none;
+        border-radius: 0.75rem; 
+        box-shadow: gainsboro 2px 2px;
+        margin: 1.2rem 1.2rem;
+        padding: 10px 15px;
+        text-decoration: none;
+        cursor: pointer;
+        color: #fff;
+        transition: 0.25s ease-in-out;
+    }
+    .btn button:hover {
+        width: 50%;
+        border-radius: 10px; 
+        background-color: #d7f8fd;
+        border: none;
+        color: black;
+        box-shadow: #4AA8B7 2px 2px;
+        margin: 1.2rem 1.2rem;
+        padding: 10px 15px;
+        cursor: pointer;
+        transform: scale(1.1);
+    }
+
+    
+}

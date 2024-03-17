@@ -1,0 +1,186 @@
+﻿@{
+    ViewData["Title"] = "Join Class";
+    Layout = "_Join";
+    
+}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/joinclass.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://unpkg.com/phosphor-icons"></script>
+</head>
+
+<body>
+    <div class="maincontent">
+        <div class="leftcontent">
+            <div class="topleft">
+                <h1 data-text-before="ALL" data-text-after=" CLASS"></h1>
+                <form class="mainsearch" onsubmit="">
+                    <input type="text" placeholder="Search" name="mainSearch">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+            <div class="filter">
+                <h5>FILTER BY:</h5>
+                <div class="dropdown">
+                    <button class="dropbtn">Dropdown</button>
+                    <div class="dropdown-content">
+                        <a href="#">Link 3</a>
+                        <a href="#">Link 1</a>
+                        <a href="#">Link 2</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Dropdown</button>
+                    <div class="dropdown-content">
+                        <a href="#">Link 3</a>
+                        <a href="#">Link 1</a>
+                        <a href="#">Link 2</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Dropdown</button>
+                    <div class="dropdown-content">
+                        <a href="#">Link 3</a>
+                        <a href="#">Link 1</a>
+                        <a href="#">Link 2</a>
+                    </div>
+                </div>
+            </div>
+            <div class="allclass" id="Allclass">
+            </div>
+        </div>
+        <div class="rightcontent">
+            <div class="topright">
+                <h1 data-text-before="MY" data-text-after=" CLASS"></h1>
+            </div>
+            <div class="calendar">
+                <header>
+                    <h3></h3>
+                    <nav>
+                        <button id="prev"></button>
+                        <button id="next"></button>
+                    </nav>
+                </header>
+                <section>
+                    <ul class="days">
+                        <li>Sun</li>
+                        <li>Mon</li>
+                        <li>Tue</li>
+                        <li>Wed</li>
+                        <li>Thu</li>
+                        <li>Fri</li>
+                        <li>Sat</li>
+                    </ul>
+                    <ul class="dates"></ul>
+                </section>
+            </div>
+            <div class="joinclass">
+                <div class="onejoin">
+                    <div class="join__data">
+                        <div class="join__icon">
+
+                        </div>
+                        <div class="join__info">
+                            <ul>
+                                <li>
+                                    <h3>Class Name</h3>
+                                </li>
+                                <li>Subject</li>
+                                <li>Location</li>
+                                <li>Date</li>
+                                <li>Time</li>
+                                <li>Description</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="join__btns">
+                        <div class="join__status">
+                            <div class="status__text">
+                                20/30
+                            </div>
+                            <div class="status__icon">
+                                <img src="" alt="">
+                            </div>
+                        </div>
+                        <div class="todetail">
+                            <button onclick="location.href='@Url.Action("Detailclass", "Home")'"><i
+                                    class="fa-solid fa-greater-than"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+@section Scripts {
+    <script src="~/js/joinclass.js" asp-append-version="true"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        window.onload = function () {
+            const accessToken = document.cookie.split(";").find((c) => c.includes("accessToken")).split("=")[1];
+            $.ajax({
+                type: "GET",
+                url: "/api/study-groups",
+                contentType: "application/json",
+                headers: {
+                    "Authorization": "Bearer " + accessToken
+                },
+                data: JSON.stringify(),
+                success: function (data) {
+                    const allclass = document.getElementById("Allclass");
+                    data.forEach((item) => {
+                        const oneclass = document.createElement("div");
+                        oneclass.classList.add("oneclass");
+                        oneclass.innerHTML = `
+                                            <div class="class__data">
+                                                <div class="class__icon">
+                                                </div>
+                                                <div class="class__info">
+                                                    <ul>
+                                                        <li>
+                                                            <h3>${item.title}</h3>
+                                                        </li>
+                                                        <li><span style='font-weight:600'>Subject : </span>${item.subject}</li>
+                                                        <li><span style='font-weight:600'>Location : </span>${item.location.address}</li>
+                                                        <li><span style='font-weight:600'>Date and Time : </span>${new Date(item.appointment).toLocaleDateString()} - ${new Date(item.appointment).toLocaleTimeString()}</li>
+                                                        <li><span style='font-weight:600'>Description : </span>${item.description}</li>
+                                                        <li class="expire">Close : ${new Date(item.expiration).toLocaleDateString()} - ${new Date(item.expiration).toLocaleTimeString()}</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="class__btns">
+                                                <div class="class__status">
+                                                    <div class="status__text">
+                                                        ${item.members.length}/${item.maxMember}
+                                                    </div>
+                                                    <div class="status__icon">
+                                                        <img src="" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="todetail">
+                                                    <button onclick="location.href='/StudyGroups/StudyGroupDetails?id=${item.id}'"><i class="fa-solid fa-greater-than"></i></button>
+                                                </div>
+                                            </div>
+                                        `;
+                        allclass.appendChild(oneclass);
+                    });
+                },
+                error: function (data) {
+                    alert("Login fail");
+                }
+            });
+
+        } 
+    </script>
+}

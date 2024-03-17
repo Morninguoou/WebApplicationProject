@@ -1,0 +1,266 @@
+@{
+    ViewData["Title"] = "My Profile";
+    Layout = "_Profile";
+}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/profile.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://unpkg.com/phosphor-icons"></script>
+</head>
+
+<body>
+    <div class="maincontent">
+        <div class="profileinfo">
+            <div class="imgprofile">
+                <img class="profileimg" src="https://i.pinimg.com/564x/d9/7b/bb/d97bbb08017ac2309307f0822e63d082.jpg"
+                    alt="">
+            </div>
+            <div class="infoprofile">
+
+                <h2>USERNAME</h2>
+                <h3>User ID:</h3>
+                <div class="follow">
+                    <h3 class="follower">
+                        Follower : <a style="text-decoration: underline; text-decoration-color: black">123</a>
+                    </h3>
+                    <h3 class="following">
+                        Following : <a style="text-decoration: underline; text-decoration-color: black">123</a>
+                    </h3>
+                </div>
+                <h3>Description</h3>
+                <div class="text-des" style="padding-top: 10px;">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                    labore et dolore magna aliqua.
+                </div>
+
+
+            </div>
+            <div class="buttonseditprofile">
+                <button class="buttons_editprofile" onclick="location.href='@Url.Action("EditProfile", "Profile")'">Edit Profile</button>
+            </div>
+        </div>
+        <div class="selectorbutton">
+            <button class="selector_button">Joined</button>
+            <button class="selector_button">Created</button>
+            <button class="selector_button">History</button>
+        </div>
+
+
+
+        <div class="profilelist">
+
+
+            <div class="card-join">
+                <div class="class__data">
+                    <div class="class__icon">
+
+                    </div>
+                    <div class="class__info">
+                        <ul>
+                            <li>
+                                <h3>Class Name</h3>
+                            </li>
+                            <li>Subject :</li>
+                            <li>Location :</li>
+                            <li>Date :</li>
+                            <li>Time :</li>
+                            <li>Description :</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="class__btns">
+                    <div class="class__status">
+                        <div class="status__text">
+                            20/30
+                        </div>
+                        <div class="status__icon">
+                            <img src="" alt="">
+                        </div>
+                    </div>
+                    <div class="cardbutton">
+                        <i class='fas fa-chevron-circle-right card_button_join'
+                            onclick="location.href='@Url.Action("Detailclass", "Home")'" style='font-size:2.5rem;'></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-create">
+                <div class="class__data">
+                    <div class="class__icon">
+
+                    </div>
+                    <div class="class__info">
+                        <ul>
+                            <li>
+                                <h3>Class Name</h3>
+                            </li>
+                            <li>Subject :</li>
+                            <li>Location :</li>
+                            <li>Date :</li>
+                            <li>Time :</li>
+                            <li>Description :</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="class__btns">
+                    <div class="class__status">
+                        <div class="status__text">
+                            20/30
+                        </div>
+                        <div class="status__icon">
+                            <img src="" alt="">
+                        </div>
+                    </div>
+                    <div class="cardbutton">
+                        <i class='fas fa-chevron-circle-right card_button_create' style='font-size:2.5rem;'></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="confirmationModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-buttons">
+                <span id="closeButton" style='font-size:45px; cursor: pointer;'>&#11198;</span>
+            </div>
+            <div class="modal-background">
+                <div class="cardpeople">
+
+                    <div class="user__profile">
+                    </div>
+                    <div class="user__info">
+                        <p>Username</p>
+                        <p>User ID</p>
+                    </div>
+
+                    <div class="btns">
+                        <button>Follow</button>
+                    </div>
+                </div>
+                <div class="cardpeople">
+
+                    <div class="user__profile">
+
+                    </div>
+                    <div class="user__info">
+                        <p>Username</p>
+                        <p>User ID</p>
+                    </div>
+
+                    <div class="btns">
+                        <button>Follow</button>
+                    </div>
+                </div>
+                <div class="cardpeople">
+
+                    <div class="user__profile">
+
+                    </div>
+                    <div class="user__info">
+                        <p>Username</p>
+                        <p>User ID</p>
+                    </div>
+
+                    <div class="btns">
+                        <button>Follow</button>
+                    </div>
+                </div>
+                <div class="cardpeople">
+
+                    <div class="user__profile">
+
+                    </div>
+                    <div class="user__info">
+                        <p>Username</p>
+                        <p>User ID</p>
+                    </div>
+
+                    <div class="btns">
+                        <button>Follow</button>
+                    </div>
+                </div>
+                <div class="cardpeople">
+
+                    <div class="user__profile">
+
+                    </div>
+                    <div class="user__info">
+                        <p>Username</p>
+                        <p>User ID</p>
+                    </div>
+
+                    <div class="btns">
+                        <button>Follow</button>
+                    </div>
+                </div>
+                <div class="cardpeople">
+
+                    <div class="user__profile">
+
+                    </div>
+                    <div class="user__info">
+                        <p>Username</p>
+                        <p>User ID</p>
+                    </div>
+
+                    <div class="btns">
+                        <button>Follow</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Find the element with the class 'join'
+        const followerlist = document.querySelector('.infoprofile h3.follower a');
+        const followinglist = document.querySelector('.infoprofile h3.following a');
+
+        // Attach a click event listener
+        followerlist.addEventListener('click', function () {
+            // Display a custom confirmation modal
+            showConfirmationModal();
+        });
+        followinglist.addEventListener('click', function () {
+            // Display a custom confirmation modal
+            showConfirmationModal();
+        });
+    });
+
+    function showConfirmationModal() {
+        const modal = document.getElementById('confirmationModal');
+        const closeButton = document.getElementById('closeButton');
+
+
+
+        // Show the modal
+        modal.style.display = 'flex'; // Change to 'flex' for centering
+
+        // Attach click event listeners to the buttons
+        closeButton.addEventListener('click', function () {
+            closeModal();
+        });
+
+
+
+    }
+
+    function closeModal() {
+        const modal = document.getElementById('confirmationModal');
+        modal.style.display = 'none';
+    }
+</script>

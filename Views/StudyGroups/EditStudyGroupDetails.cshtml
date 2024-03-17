@@ -1,0 +1,171 @@
+@{
+    ViewData["Title"] = "Edit Class Detail";
+    Layout = "_Create";
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/editclassdetail.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://unpkg.com/phosphor-icons"></script>
+</head>
+
+<body>
+    <div class="maincontent">
+        <div class="topics">
+            <i class='fas fa-chevron-circle-left back_button'
+                onclick="location.href='@Url.Action("MyStudyGroups", "StudyGroups")'" style='font-size:42px;'></i>
+            <h1 style="color:#4AA8B7">
+                EDIT <span style="color:#FFBE71;">CLASS</span>
+            </h1>
+        </div>
+        <div class="form-edit">
+
+            <div class="location">
+                <label>LOCATION</label>
+                <div id="map-container">
+                    <div id="map"></div>
+                </div>
+            </div>
+
+            <div class="start">
+                <label>MEETING TIME</label>
+                <input class="input" type="datetime-local" id="meeting-time" name="meeting-time" />
+            </div>
+            <div class="expnoti">
+                <label>EXPIRATION REGISTRATION TIME</label>
+                <input class="input" type="datetime-local" id="expiry-time" name="expiry-time" />
+            </div>
+            <div class="maxpeople">
+                <label>MAX PEOPLE</label>
+                <input class="input" type="number" id="quantity" name="quantity">
+
+            </div>
+            <div class="btn">
+                <button>SAVE CHANGES</button>
+            </div>
+
+        </div>
+    </div>
+    <script src="~/js/map.js"></script>
+</body>
+
+</html>
+
+@section Scripts {
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+        const accessToken = document.cookie.split(";").find((c) => c.includes("accessToken")).split("=")[1];
+        const id = window.location.search.split('=')[1];
+        let studyGroupDetails;
+
+
+        function initMap() {
+            if (studyGroupDetails && studyGroupDetails.location) {
+                var initialLocation = {
+                    lat: parseFloat(studyGroupDetails.location.latitude),
+                    lng: parseFloat(studyGroupDetails.location.longitude)
+                };
+                const map = new google.maps.Map(document.getElementById("map"), {
+                    center: initialLocation,
+                    zoom: 10,
+                });
+
+                marker = new google.maps.Marker({
+                    position: initialLocation,
+                    map: map,
+                    draggable: true,
+                });
+
+                reverseGeocode(initialLocation);
+
+                map.addListener("click", function (event) {
+                    moveMarker(event.latLng);
+                });
+
+                function moveMarker(location) {
+                    marker.setPosition(location);
+                    studyGroupDetails.location.latitude = location.lat();
+                    studyGroupDetails.location.longitude = location.lng();
+                    reverseGeocode(location);
+                }
+
+                function reverseGeocode(location) {
+                    const geocoder = new google.maps.Geocoder();
+                    geocoder.geocode({ 'location': location }, function (results, status) {
+                        if (status === 'OK') {
+                            if (results[0]) {
+                                studyGroupDetails.location.address = results[0].formatted_address;
+                            } else {
+                                console.error('No results found');
+                            }
+                        } else {
+                            console.error('Geocoder failed due to: ' + status);
+                        }
+                    });
+                }
+            }
+        }
+
+        $(document).ready(function () {
+            $.ajax({
+                url: "/api/study-groups/" + id,
+                type: "GET",
+                headers: {
+                    "Authorization": "Bearer " + accessToken
+                },
+                success: function (data) {
+                    console.log(data);
+                    document.getElementById("meeting-time").value = new Date(data.appointment).toISOString().slice(0, 16);
+                    document.getElementById("expiry-time").value = new Date(data.expiration).toISOString().slice(0, 16);
+                    document.getElementById("quantity").value = data.maxMember;
+
+                    studyGroupDetails = data;
+                    initMap();
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+        });
+
+        if (!window.google) {
+            const script = document.createElement('script');
+            script.async = true;
+            script.defer = true;
+            script.src = `https://maps.googleapis.com/maps/api/js?key=your-google-api-token&callback=initMap`;
+            document.head.appendChild(script);
+        }
+
+        $(".btn button").click(function () {
+            studyGroupDetails.appointment = new Date(document.getElementById("meeting-time").value).toISOString();
+            studyGroupDetails.expiration = new Date(document.getElementById("expiry-time").value).toISOString();
+            studyGroupDetails.maxMember = document.getElementById("quantity").value;
+
+            $.ajax({
+                url: "/api/study-groups/" + id,
+                type: "PUT",
+                headers: {
+                    "Authorization": "Bearer " + accessToken
+                },
+                data: JSON.stringify(studyGroupDetails),
+                contentType: "application/json",
+                success: function (data) {
+                    console.log(data);
+                    window.location.href = "/StudyGroups/MyStudyGroups";
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+        });
+    </script>
+}

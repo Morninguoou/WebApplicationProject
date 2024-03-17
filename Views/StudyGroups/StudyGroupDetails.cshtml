@@ -1,0 +1,263 @@
+@{
+    ViewData["Title"] = "Detail Class";
+    Layout = "_Create";
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/detailclass.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://unpkg.com/phosphor-icons"></script>
+</head>
+
+<body>
+    <div class="maincontent">
+        <div class="header">
+            <h1 style="color:#4AA8B7">
+                CLASS'S <span style="color:#FFBE71;">DETAIL</span>
+            </h1>
+        </div>
+        <div class="detail">
+            <div class="detail-header">
+                <p class="header">
+                    Classname : <span id="classname">xxxxx</span>
+                </p>
+                <p class="header">
+                    Subject : <span id="subject">xxxxx</span>
+                </p>
+                <p class="header">
+                    Date : <span id="date">xxxxx</span>
+                </p>
+                <p class="header">
+                    Time : <span id="time">xxxxx</span>
+                </p>
+                <div class="owner">
+                    <p class="owner-p">
+                    Owner  
+                    </p>
+
+                    <div class="cardpeople_owner">
+
+                        <div class="user__profile_owner" onclick="location.href='@Url.Action("Profileanother", "Home")'">
+
+                        </div>
+                        <div class="user__info_owner">
+                            <p id="OwnerUsername">Username</p>
+                            <p id="OwnerId">User ID</p>
+                        </div>
+
+                        <div class="btns_owner">
+                            <button id="FollowBtn">Follow</button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="location">
+                <h2 id="address">
+                </h2>
+                <div id="map-container"
+                    style="height: 300px;  width: 100%; margin: 20px 0; border: 1px solid #ccc; border-radius: 8px; overflow: hidden;">
+                    <div id="map" style="height: 100%; width: 100%;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="middle">
+            <div class="detail-box">
+                <p>Detail</p>
+                <div id="description" class="detail-text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                    labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                    eiusmod tempor incididunt ut
+                    labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                    eiusmod tempor incididunt ut
+                    labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                    eiusmod tempor incididunt ut
+                    labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                    eiusmod tempor incididunt ut
+                    labore et dolore magna aliqua.
+                </div>
+            </div>
+            <div class="people">
+                <p>Class's Member
+                    <span class="number">
+                        <span id="countMember">xxxxx</span>/<span id="maxMember">xxxxx</span>
+                    </span>
+                </p>
+                <div class="detail-text" id="Members">
+                    <div class="cardpeople">
+                        <div class="user__profile" onclick="location.href='@Url.Action("Profileanother", "Home")'">
+
+                        </div>
+                        <div class="user__info">
+                            <p>Username</p>
+                            <p>User ID</p>
+                        </div>
+
+                        <div class="btns">
+                            <button
+                                id="FollowBtn">Follow</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="btn">
+            <button class="btn">REQUEST TO JOIN</button>
+        </div>
+    </div>
+
+    <div id="confirmationModal" class="modal">
+        <div class="modal-content">
+            <p>Do you want to join?</p>
+            <div class="modal-buttons">
+                <button id="confirmButton" class="confirm-button">Confirm</button>
+                <button id="cancelButton" class="cancel-button">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+@section Scripts {
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                    <script>
+                        let studyGroupDetails;
+
+                        document.addEventListener('DOMContentLoaded', function () {
+                            // Find the element with the class 'join'
+                            const joinButton = document.querySelector('.btn .btn');
+
+                            // Attach a click event listener
+                            joinButton.addEventListener('click', function () {
+                                // Display a custom confirmation modal
+                                showConfirmationModal();
+                            });
+                        });
+
+                        function showConfirmationModal() {
+                            const modal = document.getElementById('confirmationModal');
+                            const confirmButton = document.getElementById('confirmButton');
+                            const cancelButton = document.getElementById('cancelButton');
+
+                            // Show the modal
+                            modal.style.display = 'flex'; // Change to 'flex' for centering
+
+                            // Attach click event listeners to the buttons
+                            confirmButton.addEventListener('click', function () {
+                                closeModal();
+                            });
+
+                            cancelButton.addEventListener('click', function () {
+                                closeModal();
+                            });
+                        }
+
+                        function closeModal() {
+                            const modal = document.getElementById('confirmationModal');
+                            modal.style.display = 'none';
+                        }
+
+                        function initMap() {
+                            if (studyGroupDetails && studyGroupDetails.location) {
+                                var initialLocation = {
+                                    lat: parseFloat(studyGroupDetails.location.latitude),
+                                    lng: parseFloat(studyGroupDetails.location.longitude)
+                                };
+
+
+                                console.log(initialLocation);
+
+                                map = new google.maps.Map(document.getElementById("map"), {
+                                    center: initialLocation,
+                                    zoom: 12,
+                                });
+
+                                marker = new google.maps.Marker({
+                                    position: initialLocation,
+                                    map: map,
+                                    title: "Study Group Location",
+                                });
+                            }
+                        }
+
+                        // Load Google Maps API script only once
+                        if (!window.google) {
+                            const script = document.createElement('script');
+                            script.async = true;
+                            script.defer = true;
+                            script.src = `https://maps.googleapis.com/maps/api/js?key=your-google-api-token&callback=initMap`;
+                            document.head.appendChild(script);
+                        }
+
+                        window.onload = function () {
+                            const accessToken = document.cookie.split(";").find((c) => c.includes("accessToken")).split("=")[1];
+                            const id = window.location.search.split('=')[1];
+                            $.ajax({
+                                url: '/api/study-groups/' + id,
+                                type: 'GET',
+                                headers: {
+                                    Authorization: 'Bearer ' + accessToken
+                                },
+                                success: function (data) {
+                                    document.getElementById('classname').innerText = data.studyGroup.title;
+                                    document.getElementById('subject').innerText = data.studyGroup.subject;
+                                    document.getElementById('date').innerText = `${new Date(data.studyGroup.appointment).toLocaleDateString()}`;
+                                    document.getElementById('time').innerText = `${new Date(data.studyGroup.appointment).toLocaleTimeString()}`;
+                                    document.getElementById('address').innerText = data.studyGroup.location.address;
+                                    document.getElementById('description').innerText = data.studyGroup.description;
+                                    document.getElementById('countMember').innerText = data.studyGroup.members.length;
+                                    document.getElementById('maxMember').innerText = data.studyGroup.maxMember;
+
+                                    document.getElementById('OwnerUsername').innerText = data.creator.username;
+                                    document.getElementById('OwnerId').innerText = data.creator.id;
+                                    document.getElementById('FollowBtn').innerText = data.creator.isFollowing ? "Unfollow" : "Follow";
+                                    
+                                    studyGroupDetails = data.studyGroup;
+
+                                    initMap();
+                                }
+                            });
+                        }
+
+                        document.getElementById('FollowBtn').addEventListener('click', function () {
+                            const followBtn = document.getElementById('FollowBtn');
+                            const userId = document.getElementById('OwnerId').innerText;
+                            const accessToken = document.cookie.split(";").find((c) => c.includes("accessToken")).split("=")[1];
+                            if (followBtn.innerText === "Follow") {
+                                $.ajax({
+                                    url: '/api/users/' + userId + '/follow',
+                                    type: 'POST',
+                                    headers: {
+                                        Authorization: 'Bearer ' + accessToken
+                                    },
+                                    success: function (data) {
+                                        followBtn.innerText = "Unfollow";
+                                    }
+                                });
+                            } else {
+                                $.ajax({
+                                    url: '/api/users/' + userId + '/unfollow',
+                                    type: 'POST',
+                                    headers: {
+                                        Authorization: 'Bearer ' + accessToken
+                                    },
+                                    success: function (data) {
+                                        followBtn.innerText = "Follow";
+                                    }
+                                });
+                            }
+                        });
+                    </script>
+}

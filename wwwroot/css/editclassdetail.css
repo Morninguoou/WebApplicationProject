@@ -1,0 +1,167 @@
+.maincontent{
+    position: relative;
+    background-color: #fff;
+    border-radius: 40px;;
+    padding: 20px;
+    min-width: 140vh;
+}
+
+.topics h1{
+    text-align: center;
+    margin:2rem 0 10px 0;
+}
+
+.back{
+    margin: 10px;
+}
+.back_button{
+    position: absolute;
+    top: 2rem;;
+    left: 2rem;
+    color:#4AA8B7;
+    transition: 0.25s ease-in-out; 
+}
+.back_button:hover{
+    color: #d7f8fd;
+    transition: 0.3s;
+    transform: scale(1.035);
+}
+
+.form-edit{
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    margin: auto; 
+    text-align: center; 
+}
+.location{
+    margin: 1.5rem auto;
+    align-items: center;
+    justify-content: center;
+    text-align: center; 
+}
+#map-container {
+    height: 12rem;
+    width: 70%;
+    margin: 0.5rem auto ;
+    border: 3px solid #FFBE71 ;
+    border-radius: 40px;
+    overflow: hidden;
+}
+  
+#map {
+    height: 100%;
+    width: 100%;
+}
+
+
+.start{
+    margin: 20px;
+}
+.start label {
+    display: block;
+    margin: 0;
+    margin-bottom: 0;
+    font:
+      1rem ;
+}
+
+
+.expnoti{
+    margin: 20PX;
+}
+.expnoti label {
+    display: block;
+    margin: 0;
+    margin-bottom: 0;
+    font:
+      1rem ;
+}
+  
+
+.maxpeople {
+    margin: 20px;
+    
+}
+
+.input{
+    width: 100%;
+    display: block;
+    border: 3px solid #FFBE71;
+    border-radius: 12px;
+    box-shadow: gainsboro 3px 3px 3px;
+    height: 2rem;
+    position: relative;
+    outline: none;
+    margin-top: 5px;
+    transition: 0.25s ease-in-out;
+    
+}
+.input:hover , input:focus{
+    width: 100%;
+    display: block;
+    border: 3px solid #FFBE71;
+    background-color: #d7f8fd;
+    box-shadow: #c09055 2px 2px;
+    border-radius: 10px;
+    height: 2rem;
+    transform: scale(1.035);
+}
+
+
+.btn{
+    text-align: center;
+    margin: 20px;
+    
+}
+.btn button {
+    background-color: #FFBE71;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    padding: 10px 20px;
+    box-shadow: gainsboro 2px 2px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    transition: 0.25s ease-in-out; 
+}
+.btn button:hover{
+    background-color: #d7f8fd;
+    border: none;
+    border-radius: 10px;
+    color: black;
+    box-shadow: #4AA8B7 2px 2px 2px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+
+
+@media screen  and (max-width: 785px){
+    .topics i{
+        display: none;
+    }
+    
+}
+@media screen  and (max-width: 600px){
+    .form-edit{
+        width: 60%;
+    }
+    
+}
+@media screen  and (max-width: 450px){
+    .form-edit{
+        width: 80%;
+    }
+    
+}

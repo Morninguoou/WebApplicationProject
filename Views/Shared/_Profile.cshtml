@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - marian_onsite</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        function toggleSidebar() {
+            const navbar = document.querySelector("nav");
+            navbar.classList.toggle("active");
+            document.body.classList.toggle("nav-active");
+
+            if (navbar.classList.contains("active")) {
+                document.body.classList.add("nav-active");
+            } else {
+                document.body.classList.remove("nav-active");
+            }
+        }
+        function changeAttributes() {
+            var button = document.getElementById("btn_view_profile");
+
+            button.setAttribute("asp-area", "");
+            button.setAttribute("asp-controller", "Profile");
+            button.setAttribute("asp-action", "Index");
+        }
+    </script>
+</head>
+
+<body>
+    <header>
+        <button class="sidebar-toggle" onclick="toggleSidebar()">
+            <i class="fas fa-bars"></i>
+        </button>
+        <nav>
+            <div class="logo">
+                <h1 class="thai-900">MARIAN ONSITE</h1>
+            </div>
+            <ul class="selector">
+                <li class="linker">
+                    <a asp-area="" asp-controller="Profile" asp-action="Index" class="thai-900">MY PROFILE</a>
+                </li>
+                <li class="linker nopad">
+                    <div>
+                        <img class="profile__img"
+                            src="https://i.pinimg.com/564x/d9/7b/bb/d97bbb08017ac2309307f0822e63d082.jpg" alt="">
+                    </div>
+                </li>
+                <li class="linker nopad">
+                    <div class="profile__container">
+                        <h4 class="fredoka-600">USERNAME</h4>
+                        <div class="profile__data thai-100">niranoon</div>
+                        <h4 class="fredoka-600">USER ID</h4>
+                        <div class="profile__data fredoka-300">12345</div>
+                        <button onclick="location.href='@Url.Action("Index", "Profile")'">view profile</button>
+                    </div>
+                </li>
+                <li class="linker">
+                    <a asp-area="" asp-controller="StudyGroups" asp-action="Index" class="thai-900 active">JOIN CLASS</a>
+                </li>
+                <li class="linker">
+                    <a asp-area="" asp-controller="StudyGroups" asp-action="MyStudyGroups" class="thai-900">CREATE CLASS</a>
+                </li>
+                <li class="linker">
+                    <div class="following">
+                        <a asp-area="" asp-controller="Profile" asp-action="Following" class="thai-900">PEOPLE FOLLOWING</a>
+                    </div>
+                <li class="linker">
+                    <a id="logoutButton" asp-area="" asp-controller="Auth" asp-action="Index" class="thai-900 active">LOG OUT</a>
+                </li>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <footer></footer>
+
+    <script>
+        function logout() {
+            document.cookie = "accessToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        }
+        document.getElementById("logoutButton").addEventListener("click", logout);
+    </script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>

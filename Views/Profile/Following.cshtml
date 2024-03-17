@@ -1,0 +1,65 @@
+@{
+    ViewData["Title"] = "My following people";
+    Layout = "_Follow";
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/follow.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://unpkg.com/phosphor-icons"></script>
+</head>
+
+<body>
+    <div class="maincontent">
+        <div class="top">
+            <h1 data-text-before="MY FOLLOWING" data-text-after=" PEOPLE"></h1>
+        </div>
+         <div class="people__search">
+            <h3>Search people by id :</h3>
+            <form class="mainsearch" onsubmit="">
+                <input type="text" placeholder="Search" name="mainSearch">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+        <div class="allpeople">
+            <div class="onepeople">
+                <div class="user__data">
+                    <div class="user__profile">
+
+                    </div>
+                    <div class="user__info">
+                        <p>Username :</p>
+                        <p>User ID :</p>
+                    </div>
+                </div>
+                <div class="btns">
+                    <button onclick="location.href='@Url.Action("Anotherprofile", "Home")'">View profile</button>
+                </div>
+            </div>
+            <div class="onepeople">
+                <div class="user__data">
+                    <div class="user__profile">
+
+                    </div>
+                    <div class="user__info">
+                        <p>Username :</p>
+                        <p>User ID :</p>
+                    </div>
+                </div>
+                <div class="btns">
+                    <button onclick="location.href='@Url.Action("Anotherprofile", "Home")'">View profile</button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</body>
+</html>

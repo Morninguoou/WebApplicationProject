@@ -1,0 +1,195 @@
+@{
+    ViewData["Title"] = "Create Class Detail";
+    Layout = "_Create";
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/createclassdetail.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://unpkg.com/phosphor-icons"></script>
+</head>
+
+<body>
+    <div class="maincontent">
+        <div class="topics">
+            <h1 style="color:#4AA8B7">
+                CREATE <span style="color:#FFBE71;">CLASS</span>
+            </h1>
+            <div class="back">
+                <i class='fas fa-chevron-circle-left back_button'
+                    onclick="location.href='@Url.Action("MyStudyGroups", "StudyGroups")'" style='font-size:43px;'></i>
+            </div>
+        </div>
+        <div class="form-create">
+            <div class="formleft">
+                <div class="classname">
+                    <label class="labelleft">CLASS NAME</label>
+                    <input class="input" id="title" type="text" placeholder="Enter class name" name="className" required>
+                </div>
+
+                <div class="subject">
+                    <label>SUBJECT</label>
+                    <input class="input" type="text" placeholder="Enter subject" name="subject" id="subject" required>
+                </div>
+
+                <div class="description">
+                    <label>DETAILS</label>
+                    <textarea class="input" 
+                        id="description"
+                    placeholder="Enter details" name="details" rows="5" cols="50"></textarea>
+                </div>
+            </div>
+
+            <div class="formright">
+                <div class="location">
+                    <label>LOCATION</label>
+                    <div id="map-container">
+                        <div id="map"></div>
+                    </div>
+                </div>
+
+                <div class="start">
+                    <label>MEETING DATE</label>
+                    <input class="input" 
+                        id="meeting-time"
+                    type="datetime-local" id="meeting-time" name="meeting-time" required/>
+
+                </div>
+                <div class="expnoti">
+                    <label>EXPIRATION REGISTRATION DATE</label>
+                    <input class="input" 
+                        type="datetime-local"
+                        id="expiration-time" name="expiration-time"
+                     />
+                </div>
+                <div class="maxpeople">
+                    <label>MAX MEMBERS</label>
+                    <input class="input" type="number" id="quantity" name="quantity" required>
+
+                </div>
+                <div class="btn">
+                    <button>CREATE</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+
+@section Scripts {
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+        var studyGroup = {
+        title: "",
+        subject: "",
+        description: "",
+        location: {
+            latitude: 13.727096,
+            longitude: 100.769823,
+            address: "Some where in Thailand"
+        },
+        appointment: null,
+        expiration: null,
+        maxMember: 0
+    }
+
+    function initMap() {
+        const map = new google.maps.Map(document.getElementById("map"), {
+            center: { lat: studyGroup.location.latitude, lng: studyGroup.location.longitude },
+            zoom: 10,
+        });
+        
+
+        marker = new google.maps.Marker({
+            position: { lat: studyGroup.location.latitude, lng: studyGroup.location.longitude },
+            map: map,
+            title: "Hello World!",
+            draggable: true,
+        });
+
+        reverseGeocode({
+            lat: studyGroup.location.latitude,
+            lng: studyGroup.location.longitude
+        });
+
+        map.addListener("click", function (event) {
+            moveMarker(event.latLng);
+        });
+
+        function moveMarker(location) {
+            marker.setPosition(location);
+            studyGroup.location.latitude = location.lat();
+            studyGroup.location.longitude = location.lng();
+            reverseGeocode(location);
+        }
+
+        function reverseGeocode(location) {
+            const geocoder = new google.maps.Geocoder();
+            geocoder.geocode({ 'location': location }, function (results, status) {
+                if (status === 'OK') {
+                    if (results[0]) {
+                        studyGroup.location.address = results[0].formatted_address;
+                    } else {
+                        console.error('No results found');
+                    }
+                } else {
+                    console.error('Geocoder failed due to: ' + status);
+                }
+            });
+        }
+    }
+
+        if (!window.google) {
+            const script = document.createElement('script');
+            script.async = true;
+            script.defer = true;
+            script.src = `https://maps.googleapis.com/maps/api/js?key=your-google-api-token&callback=initMap`;
+            document.head.appendChild(script);
+        }
+
+        $(document).ready(function () {
+            $("button").click(function () {
+                studyGroup.title = $("#title").val();
+                studyGroup.subject = $("#subject").val();
+                studyGroup.description = $("#description").val();
+                studyGroup.appointment = $("#meeting-time").val();
+                studyGroup.expiration = $("#expiration-time").val();
+                studyGroup.maxMember = $("#quantity").val();
+               
+                const accessToken = document.cookie.split(";").find((c) => c.includes("accessToken")).split("=")[1];
+                $.ajax({
+                    type: "POST",
+                    url: "/api/study-groups",
+                    data: JSON.stringify(studyGroup),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    headers: {
+                        Authorization: `Bearer ${accessToken}`
+                    },
+                    success: function (response) {
+                        location.href = "/StudyGroups/MyStudyGroups";
+                    },
+                    failure: function (response) {
+                        alert(response);
+                    },
+                    error: function (response) {
+                        console.log(response);
+                    }
+                });
+            });
+        });
+    </script>
+}

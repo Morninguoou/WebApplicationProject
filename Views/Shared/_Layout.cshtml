@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Marian Onsite</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/signup.css" asp-append-version="true" />
+</head>
+
+<body>
+    @RenderBody()
+    @await RenderSectionAsync("Scripts", required: true)
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        window.onload = function () {
+            if (document.cookie.includes("accessToken")) {
+                $.ajax({
+                    type: "GET",
+                    url: "/api/auth/me",
+                    contentType: "application/json",
+                    headers: {
+                        Authorization: `Bearer ${document.cookie.split("=")[1]}`
+                    },
+                    success: function (data) {
+                        window.location.href = "/StudyGroups";
+                    },
+                    error: function (data) {
+                        window.location.href = "/Auth/SessionTimeout";
+                        document.cookie = "accessToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                    }
+                });
+            }
+        }
+    </script>
+</body>
+
+</html>

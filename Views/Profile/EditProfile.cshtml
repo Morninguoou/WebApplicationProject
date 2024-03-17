@@ -1,0 +1,90 @@
+@{
+    ViewData["Title"] = "Edit my profile";
+    Layout = "_Profile";
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/editprofile.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://unpkg.com/phosphor-icons"></script>
+</head>
+
+<body>
+    <div class="maincontent">
+        <div class="topics">
+            <h1 style="color:#4AA8B7">
+                EDIT <span style="color:#FFBE71;">PROFILE</span>
+            </h1>
+            <div class="back">
+                <i class='fas fa-chevron-circle-left back_button' onclick="location.href='@Url.Action("Index", "Profile")'" style='font-size:48px;'></i>
+            </div>
+        </div>
+        <div class="form-edit">
+            <div class="edit-profile">
+
+                <div class="layout-profile">
+                     <div class="profile-container">
+                        <div class="profile-image-container">
+                            <img id="profile-picture" src="#" alt="Profile Picture">
+                            <div class="upload-button-container">
+                                <input type="file" id="uploadInput" style="display:none" onchange="previewImage()" />
+                                <label for="uploadInput" class="upload-button">+</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label>Name</label>
+                    <input type="text" id="name" value="John Doe">
+                </div>
+
+                <div class="field">
+                    <label>Phone Number</label>
+                    <input type="text" id="phone" value="081-xxx-xxxx">
+                </div>
+
+                <div class="field-BIO">
+                    <label>BIO</label>
+                    <textarea type="text" id="BIO">xxxxxxxxxxxxxxxx</textarea>
+                </div>       
+
+                <div class="btn">
+                    <button>SAVE CHANGES</button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    function previewImage() {
+        const fileInput = document.getElementById('uploadInput');
+        const profilePicture = document.getElementById('profile-picture');
+
+        const file = fileInput.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                profilePicture.src = e.target.result;
+            };
+
+            reader.readAsDataURL(file);
+        }
+    }
+
+</script>

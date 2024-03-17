@@ -1,0 +1,207 @@
+.maincontent{
+    background-color: #fff;
+    border-radius: 40px;
+    min-height: 100vh;
+}
+.top{
+    display: flex;
+    justify-content: space-between;
+}
+
+.top h1{
+    padding-left: 6%;
+    margin-bottom: 1rem;
+}
+
+.top h1::before{
+    content: attr(data-text-before);
+    color: #4AA8B7;
+}
+
+.top h1::after{
+    content: attr(data-text-after);
+    color: #FFBE71;
+}
+
+.top button{
+    height: 2rem;
+    border-radius: 10px;
+    border: transparent;
+    margin: 1.4rem 4rem 0 0;
+    background-color: #FFBE71;
+    color: #fff;
+    transition: 0.3s ease-in-out;
+}
+
+.top button:hover{
+    background-color: #faab4a;
+    transform: scale(1.08);
+}
+
+.class__container{
+    background-color: #EEFDFF;
+    border-radius: 25px;
+    margin: 0 5%;
+    padding: 2% 1%;
+}
+
+.oneclass{
+    background-color: #fff;
+    border-radius: 20px;
+    margin: 2% 3%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    transition: 0.25s ease-in-out;
+}
+
+.oneclass h3{
+    font-weight: 500;
+}
+
+.oneclass:hover{
+    transform: scale(1.035);
+    background-color: #FFF8EA;
+}
+
+.class__data{
+    display: flex;
+}
+
+.class__icon{
+    background-color: #D9D9D9;
+    border-radius: 50%;
+    width: 6rem;
+    height: 6rem;
+    position: relative;
+    left: 1rem;
+    top: 2rem;
+}
+
+.class__info ul li{
+    list-style-type: none;
+}
+
+.class__info h3{
+    margin-bottom: 0;
+}
+
+.btns {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+
+.noti {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.controller {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+}
+
+.noti button{
+    padding: 10px 17px; 
+    border: none;
+    border-radius: 40px;
+    background-color: #FF5C5C;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    height: 50%;
+    margin-right: 2%;
+    margin-top: 2%;
+    transition: 0.3s ease-in-out;
+}
+
+.noti button:hover{
+    background-color: #ff1616;
+    transform: scale(1.1)
+}
+
+.controller button{
+    padding: 7px 20px;
+    margin-right: 1%;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    height: 40%;
+    margin-top: 9%;
+}
+
+.controller button:first-child{
+    background-color: #FF5C5C;
+    transition: 0.35s ease-in-out;
+}
+.controller button:nth-child(2){
+    background-color: #56C1D2;
+    transition: 0.35s ease-in-out;
+}
+.controller button:nth-child(3){
+    background-color: #FFBE71;
+    transition: 0.35s ease-in-out;
+}
+.controller button:last-child{
+    margin-right: 3%;
+    padding: 7px 12px;
+    background-color: #FFBE71;
+    transition: 0.4s ease-in-out;
+}
+
+.controller button:first-child:hover{
+    background-color: #ff1616;
+    transform: translateY(-0.6rem);
+}
+.controller button:nth-child(2):hover{
+    background-color: #27a3b6;
+    transform: translateY(-0.6rem);
+}
+.controller button:nth-child(3):hover{
+    background-color: #ffad49;
+    transform: translateY(-0.6rem);
+}
+.controller button:last-child:hover{
+    background-color: #ffad49;
+    transform: translateX(0.5rem);
+}
+
+/* responsive */
+
+@media screen and (max-width: 785px){
+    body{
+        font-size: 12px;
+    }
+    .noti button{
+        font-size: 10px;
+        padding: 0px 12px; 
+    }
+    .controller{
+        align-items: flex-end;
+    }
+
+    .controller button{
+        padding: 0.5rem 0.75rem;
+        border-radius: 15px;
+        font-size: 10px;
+        height: 40%;
+    }
+    .controller button:last-child{
+        margin-right: 3%;
+        padding: 7px 10px;
+    }
+    .btns{
+        overflow: hidden;
+    }
+    .top button{
+        height: 2rem;
+        margin: 1.2rem 4rem 0 0;
+        height: 2.5rem;
+    }
+}
+
+@media screen and (max-width: 426px){
+
+}

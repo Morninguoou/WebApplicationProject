@@ -1,0 +1,190 @@
+.maincontent{
+    position: relative;
+    background-color: #fff;
+    border-radius: 40px;
+    padding: 20px;
+}
+.topics h1{
+    text-align: center;
+    margin: 2.rem;
+}
+.edit-profile {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;  
+}
+
+.field {
+    margin: 30px ;  
+}
+
+label {
+    display: block;
+    margin-bottom: 3px ;
+    font-size: 18px;
+    
+}
+
+input{
+    padding: 8px 12px;
+    width: 90%;
+    border: 3px solid #FFBE71;
+    border-radius: 12px;
+    box-shadow: gainsboro 3px 3px 3px;
+    height: 1.25rem;
+    position: relative;
+    outline: none;
+    transition: 0.25s ease-in-out;
+} 
+input:hover , input:focus{
+    padding: 8px 12px;
+    width: 90%;
+    border: 3px solid #FFBE71;
+    background-color: #d7f8fd;
+    border-radius: 10px;
+    outline: none;
+    transform: scale(1.035);
+}
+.field-BIO {
+    margin: 30px ;  
+}
+.field-BIO textarea{
+    padding: 8px 12px;
+    width: 90%;
+    height: 2.5rem;
+    border: 3px solid #FFBE71;
+    box-shadow: gainsboro 3px 3px 3px;
+    border-radius: 12px; 
+    resize: none;
+    overflow-y: auto;
+    transition: 0.25s ease-in-out;
+    
+}
+.field-BIO textarea:hover ,.field-BIO textarea:focus{
+    padding: 8px 12px;
+    width: 90%;
+    height: 2.5rem;
+    border: 3px solid #FFBE71;
+    background-color: #d7f8fd;
+    border-radius: 10px; 
+    resize: none;
+    overflow-y: auto;
+    transform: scale(1.035);
+    
+}
+
+
+.btn {
+    margin: 30px ;  
+}
+.btn button {
+    background-color: #FFBE71;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    transition: 0.25s ease-in-out; 
+}
+.btn button:hover{
+    background-color: #d7f8fd;
+    border: none;
+    border-radius: 10px;
+    color: black;
+    box-shadow: #4AA8B7 1px 1px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.back{
+    margin: 20px;
+}
+.back_button{
+    position: absolute;
+    top: 2.5rem;;
+    left: 2.5rem;
+    color:#4AA8B7;
+}
+.back_button:hover{
+    color: #d7f8fd;
+    transition: 0.3s;
+}
+
+.layout-profile {
+    display: flex;
+    justify-content: center;
+}
+
+.profile-container {
+    position: relative;
+}
+
+.profile-image-container {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.upload-button-container {
+    position: absolute;
+    bottom: 0;
+    right:  1rem; 
+    transform: translate(0%, 0%); 
+}
+
+.upload-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ccc;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#uploadInput {
+    display: none;
+}
+
+#profile-picture {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+@media screen  and (max-width: 785px){
+    .topics i{
+        display: none;
+    }
+    
+}
+@media screen  and (max-width: 600px){
+    .edit-profile{
+        width: 60%;
+    }
+    
+}
+@media screen  and (max-width: 450px){
+    .edit-profile{
+        width: 80%;
+    }
+    
+}

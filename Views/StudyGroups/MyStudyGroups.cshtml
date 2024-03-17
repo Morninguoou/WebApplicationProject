@@ -1,0 +1,103 @@
+@{
+    ViewData["Title"] = "Create Class";
+    Layout = "_Create";
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/createclass.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://unpkg.com/phosphor-icons"></script>
+</head>
+
+<body>
+    <div class="maincontent">
+        <div class="top">
+            <h1 data-text-before="MY CREATED" data-text-after="  CLASS"></h1>
+            <button onclick="location.href='@Url.Action("CreateStudyGroup", "StudyGroups")'">CREATE CLASS</button>
+        </div>
+        <div class="class__container" id="AllClass">
+        </div>
+    </div>
+</body>
+
+</html>
+
+@section Scripts {
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+        const accessToken = document.cookie.split(";").find((c) => c.includes("accessToken")).split("=")[1];
+
+        $(document).ready(function () {
+            $.ajax({
+                type: "GET",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                headers: {
+                    Authorization: `Bearer ${accessToken}`
+                },
+                url: "/api/user/study-groups",
+                success: function (data) {
+                    var html = '';
+                    $.each(data, function (key, item) {
+                        html += '<div class="oneclass">';
+                        html += '<div class="class__data">';
+                        html += '<div class="class__icon">';
+                        html += '</div>';
+                        html += '<div class="class__info">';
+                        html += '<ul>';
+                        html += `<li><h3>${item.title}</h3></li>`;
+                        html += `<li>${item.subject}</li>`;
+                        html += `<li>${item.location && item.location.address ? item.location.address : 'BangKok, Thailand'}</li>`;
+                        html += `<li>${new Date(item.appointment).toLocaleDateString()} - ${new Date(item.appointment).toLocaleTimeString()}</li>`;
+                        html += `<li>${item.description}</li>`;
+                        html += '</ul>';
+                        html += '</div>';
+                        html += '</div>';
+                        html += '<div class="btns">';
+                        html += '<div class="noti">';
+                        html += '<button><span>1</span></button>';
+                        html += '</div>';
+                        html += '<div class="controller">';
+                        html += `<button onclick="deleteClass('${item.id}')"><span>Delete</span></button>`;
+                        html += `<button onclick="window.location.href='/StudyGroups/EditStudyGroupDetails?id=${item.id}'"><span>Edit</span></button>`;
+                        html += '<button><span>Full</span></button>';
+                        html += '<button><i class="fa-solid fa-greater-than"></i></button>';
+                        html += '</div>';
+                        html += '</div>';
+                        html += '</div>';
+                    });
+                    $('#AllClass').html(html);
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+        });
+
+        function deleteClass(id) {
+            $.ajax({
+                type: "DELETE",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                headers: {
+                    Authorization: `Bearer ${accessToken}`
+                },
+                url: `/api/study-groups/${id}`,
+                success: function (data) {
+                    location.reload();
+                },
+                error: function (error) {
+                }
+            });
+        }
+    </script>
+}

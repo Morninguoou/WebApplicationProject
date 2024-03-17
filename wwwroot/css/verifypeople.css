@@ -1,0 +1,122 @@
+.maincontent{
+    background-color: #fff;
+    border-radius: 40px;
+    min-height: 100vh;
+}
+.top{
+    display: flex;
+    justify-content: space-between;
+}
+
+.top h1{
+    padding-left: 6%;
+    margin-bottom: 1rem;
+}
+
+.top h1::before{
+    content: attr(data-text-before);
+    color: #4AA8B7;
+}
+
+.top h1::after{
+    content: attr(data-text-after);
+    color: #FFBE71;
+}
+
+.class__name h2{
+    margin: 0;
+    padding-left: 6%;
+}
+
+.class__subject h4{
+    margin-top: 0.5rem;
+    padding-left: 6%;
+}
+
+.allclass{
+    background-color: #EEFDFF;
+    border-radius: 25px;
+    margin: 0 5%;
+    padding: 0.5% 1%;
+}
+
+.oneclass{
+    background-color: #fff;
+    border-radius: 20px;
+    margin: 1% 2%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    transition: 0.24s ease-in-out;
+}
+
+.oneclass:hover{
+    transform: scale(1.035);
+    background-color: #FFF8EA;
+}
+
+.class__data{
+    display: flex;
+    margin-left: 1rem;
+}
+
+.user__profile{
+    margin: 1rem;
+    background-color: #D9D9D9;
+    border-radius: 50%;
+    width: 5rem;
+    height: 5rem;
+}
+
+.user__info{
+    margin-top: 0.5rem;
+}
+
+.btns {
+    display: flex;
+    justify-content: flex-end;
+    padding: 2.25rem 1rem 2.25rem 0;
+}
+
+.btns button{
+    border: transparent;
+    border-radius: 20px;
+    margin: 1% 1%;
+    padding: 1% 2.5%;
+    color: #fff;
+    transition: 0.25s ease-in-out;
+}
+
+.btns button:hover{
+    transform: translateY(-0.5rem);
+}
+
+.btns button:first-child{
+    background-color: #FF5C5C;
+}
+
+.btns button:nth-child(2){
+    background-color: #53B74A;
+}
+
+.btns button:first-child:hover{
+    background-color: #ff1616;
+}
+
+.btns button:nth-child(2):hover{
+    background-color: #37ac2c;
+}
+
+/* responsive */
+
+@media screen and (max-width: 785px){
+    body{
+        font-size: 12px;
+    }
+    .btns button{
+        border: transparent;
+        border-radius: 15px;
+        margin: 1% 1%;
+        padding: 0 3%;
+        font-size: 10px;
+    }
+}

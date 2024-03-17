@@ -1,0 +1,675 @@
+.maincontent{
+    position: relative;
+    background-color: #fff;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    padding: 30px;
+    min-height: 100vh;
+}
+
+.header{
+    margin: 10px;
+    margin-bottom: 0;
+}
+.header h1{
+    margin:  0 0 0 2rem;
+}
+
+
+.detail {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1rem;
+}
+
+.detail-header {
+    width: 65%;
+    padding-top: 1.75rem 0;
+
+}
+.owner {
+    width: 85%;
+    background-color: #EEFDFF;
+    padding: 0.5rem;
+    margin: 0.75rem;
+    border-radius: 20px;
+}
+p.owner-p{
+    margin: 0.5rem 0.2rem;
+    
+}
+
+.cardpeople_owner{
+    padding: 0.2rem;
+    position: relative;
+    width: 90%;
+    background-color: #fff;
+    border-radius: 10px;
+    margin: 1% ;
+    display: grid;
+    grid-template-columns: 25% 55% 20%;
+    transition: 0.24s ease-in-out;
+}
+.cardpeople_owner:hover{
+    transform: scale(1.035);
+    background-color:#fcebd8;
+    
+}
+
+
+
+.user__profile_owner{
+    position: relative;
+    grid-column: 1;
+    margin: auto;
+    background-color: #D9D9D9;
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+}
+
+.user__info_owner{
+    grid-column: 2;
+    margin: 0.5rem;
+}
+.user__info_owner p{
+    margin: 0.2rem;
+    font-size: 12px
+}
+
+.btns_owner {
+    position: relative;
+    grid-column: 3;
+    display: flex;
+    align-items: center; 
+    justify-content: space-around;
+    right: 5px;
+
+}
+
+.btns_owner button{
+    position: relative;
+    align-items: center;
+    border: transparent;
+    border-radius: 20px;
+    color: #fff;
+    transition: 0.25s ease-in-out;
+}
+
+.btns_owner button:hover{
+    transform: translateY(-0.25rem);
+}
+
+.btns_owner button:first-child{
+    background-color:#56C1D2;
+}
+
+.btns_owner button:first-child:hover{
+    background-color:#4AA8B7;
+}
+
+
+.detail-header p.header {
+    background-color: #EEFDFF;
+    width: 85%;
+    height: 1.75rem;
+    padding: 0.2rem 10px;
+    margin: 0.75rem;
+    border-radius: 80px;
+    display: flex;
+    align-items: center;
+}
+
+.middle{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between ;
+}
+.detail-box{
+    width: 50%;
+
+}
+.detail-box p{
+    margin: 1rem 2rem 0 2rem;
+    font-size: 18px;
+
+}
+.detail-text {
+    padding: 0.5rem;
+    background-color: #FFF8EF;
+    border: 1px solid #FFBE71;
+    box-shadow: #FFBE71 2px 2px;
+    border-radius: 10px;
+    width: 90%;
+    height: 14rem;
+    margin: 10px 10px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.people{
+    width: 50%;
+}
+.people p{
+    margin: 1rem 2rem 0 2rem;
+    font-size: 18px;
+}
+.people p .number{
+    padding-left: 0.75rem;
+}
+.peoplelist{
+    width: 100%;
+
+}
+
+.cardpeople{
+
+    position: relative;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+    margin: 1% 0;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    transition: 0.24s ease-in-out;
+}
+
+.cardpeople:hover{
+    transform: scale(1.035);
+    background-color: #EEFDFF;
+}
+
+
+
+.user__profile{
+    position: relative;
+    grid-column: 1;
+    margin: auto;
+    background-color: #D9D9D9;
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+}
+
+.user__info{
+    grid-column: 2;
+    margin: 0.5rem;
+}
+.user__info p{
+    margin: 0.2rem;
+    font-size: 12px
+}
+
+.btns {
+    position: relative;
+    grid-column: 3;
+    display: flex;
+    align-items: center; 
+    justify-content: space-around;
+    right: 5px;
+
+}
+
+.btns button{
+    position: relative;
+    align-items: center;
+    border: transparent;
+    border-radius: 20px;
+    color: #fff;
+    transition: 0.25s ease-in-out;
+}
+
+.btns button:hover{
+    transform: translateY(-0.25rem);
+}
+
+.btns button:first-child{
+    background-color:#56C1D2;
+}
+
+.btns button:first-child:hover{
+    background-color:#4AA8B7;
+}
+
+
+.btn {
+    display: flex;
+    justify-content: end;
+}
+
+
+
+.btn button {
+    background-color: #FFBE71;
+    border: none;
+    border-radius: 0.75rem; 
+    box-shadow: gainsboro 2px 2px;
+    margin: 1.2rem 1.2rem;
+    padding: 10px 15px;
+    text-decoration: none;
+    cursor: pointer;
+    color: #fff;
+    transition: 0.25s ease-in-out;
+}
+.btn button:hover {
+    border-radius: 10px; 
+    background-color: #d7f8fd;
+    border: none;
+    color: black;
+    box-shadow: #4AA8B7 2px 2px;
+    margin: 1.2rem 1.2rem;
+    padding: 10px 15px;
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow:black 1px 1px;
+    width: 250px; /* Set a specific width for the modal content */
+}
+.modal-content p{
+    margin: 16px 10px;
+    font-size: 18px;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 10px 0 10px;
+}
+
+.confirm-button, .cancel-button {
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: gainsboro 2px 2px;
+    cursor: pointer;
+    transition: 0.25s ease-in-out;
+}
+.confirm-button:hover, .cancel-button:hover {
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: gainsboro 2px 2px;
+    cursor: pointer;
+    transform: scale(1.06);
+}
+
+.confirm-button {
+    background-color: #56C1D2;
+    color: #fff;
+}
+
+.cancel-button {
+    background-color: #FFCD92;
+    color: #000;
+}
+
+.location {
+    margin: 10px;
+    width: 35%;
+    text-align: center;
+}
+.location h2{
+    margin-top: 0;
+    margin-bottom: 10px;
+    padding: 0 10px;
+    
+
+}
+.map{
+    border:  #FFCD92 solid 2px;
+    border-radius: 20px;
+    margin: auto;
+    height: 80%;
+    width: 80%;
+
+}
+
+
+
+@media screen and (max-width: 600px) {
+    .maincontent{
+        position: relative;
+        background-color: #fff;
+        border-top-left-radius: 40px;
+        border-top-right-radius: 40px;
+        padding: 30px;
+        min-height: 100vh;
+    }  
+    .header{
+        margin: 10px;
+        margin-bottom: 0;
+    }
+    .header h1{
+        margin:  0 0 0 1.5rem;
+        font-size: 1.75rem;
+    }
+
+
+    .detail {
+        display: flex;
+        flex-direction: column;
+        margin-top: 1rem;
+    }
+
+    .detail-header {
+        width: 95%;
+    }
+    .owner {
+        width: 85%;
+        background-color: #EEFDFF;
+        padding: 0.5rem;
+        margin: 0.75rem;
+        border-radius: 20px;
+    }
+    p.owner-p{
+        margin: 0.5rem 0.2rem;
+        
+    }
+    
+    .cardpeople_owner{
+        padding: 0.2rem;
+        position: relative;
+        width: 90%;
+        background-color: #fff;
+        border-radius: 10px;
+        margin: 1% ;
+        display: grid;
+        grid-template-columns: 25% 55% 20%;
+        transition: 0.24s ease-in-out;
+    }
+    .cardpeople_owner:hover{
+        transform: scale(1.035);
+        background-color:#fcebd8;
+        
+    }
+    
+    
+    
+    .user__profile_owner{
+        position: relative;
+        grid-column: 1;
+        margin: auto;
+        background-color: #D9D9D9;
+        border-radius: 50%;
+        width: 3rem;
+        height: 3rem;
+    }
+    
+    .user__info_owner{
+        grid-column: 2;
+        margin: 0.5rem;
+    }
+    .user__info_owner p{
+        margin: 0.2rem;
+        font-size: 12px
+    }
+    
+    .btns_owner {
+        position: relative;
+        grid-column: 3;
+        display: flex;
+        align-items: center; 
+        justify-content: space-around;
+        right: 5px;
+    
+    }
+    
+    .btns_owner button{
+        position: relative;
+        align-items: center;
+        border: transparent;
+        border-radius: 20px;
+        color: #fff;
+        transition: 0.25s ease-in-out;
+    }
+    
+    .btns_owner button:hover{
+        transform: translateY(-0.25rem);
+    }
+    
+    .btns_owner button:first-child{
+        background-color:#56C1D2;
+    }
+    
+    .btns_owner button:first-child:hover{
+        background-color:#4AA8B7;
+    }
+    
+    
+    .detail-header p.header {
+        background-color: #EEFDFF;
+        width: 85%;
+        height: 1.75rem;
+        padding: 0.2rem 10px;
+        margin: 0.75rem;
+        border-radius: 80px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .detail-header p {
+        background-color: #EEFDFF;
+        width: 90%;
+        height: 1.5rem;
+        border-radius: 80px;
+    }
+    .location {
+        margin: auto;
+        width: 100%;
+        text-align: center;
+    }
+    .location h2{
+        margin-top: 0.2rem;
+        margin-bottom: 0.1rem;
+        padding: 0 10px;
+        font-size: 16px;
+    }
+    .map{
+        border:  #FFCD92 solid 2px;
+        border-radius: 20px;
+        margin: auto;
+        height: 8rem;
+        width: 60%;
+
+    }
+    .middle{
+        display: flex;
+        flex-direction: column;
+        justify-content:space-between ;
+    }
+    .detail-box{
+        width: 100%;
+        margin:0 0 0.5rem 0;
+        
+    }
+    .detail-box p{
+        margin: 1rem 2rem 0.2rem 2rem;
+        font-size: 18px;
+
+    }
+    .detail-text {
+        padding: 0.5rem;
+        background-color: #FFF8EF;
+        border: 1px solid #FFBE71;
+        box-shadow: #FFBE71 2px 2px;
+        border-radius: 10px;
+        width: 90%;
+        height: 10rem;
+        margin: auto;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .people{
+        width: 100%;
+    }
+    .people p{
+        margin: 1rem 2rem 0.2rem 2rem;
+        font-size: 18px;
+    }
+    .people p .number{
+        padding-left: 0.75rem;
+    }
+    .peoplelist{
+        width: 100%;
+
+    }
+
+    .cardpeople{
+        position: relative;
+        width: 100%;
+        background-color:#FFF;
+        border-radius: 10px;
+        margin: 1.5% 0;
+        display: grid;
+        grid-template-columns: 25% 55% 20%;
+        transition: 0.24s ease-in-out;
+    }
+
+    .cardpeople:hover{
+        transform: scale(1.035);
+        background-color: #EEFDFF;
+    }
+
+
+
+    .user__profile{
+        grid-column: 1;
+        margin: 0.5rem 1rem;
+        background-color: #D9D9D9;
+        border-radius: 50%;
+        width: 3rem;
+        height: 3rem;
+    }
+
+    .user__info{
+        grid-column: 2;
+        margin: 0.5rem;
+    }
+    .user__info p{
+        margin: 0.2rem;
+        font-size: 14px;
+    }
+
+    
+
+    .btns button:hover{
+        transform: translateY(-0.25rem);
+    }
+
+    .btns button:first-child{
+        background-color:#56C1D2;
+    }
+
+    .btns button:first-child:hover{
+        background-color:#4AA8B7;
+    }
+
+
+    .btn {
+        display: flex;
+        justify-content: center;
+    }
+
+
+
+    .btn button {
+        width: 50%;
+        background-color: #FFBE71;
+        border: none;
+        border-radius: 0.75rem; 
+        box-shadow: gainsboro 2px 2px;
+        margin: 1.2rem 1.2rem;
+        padding: 10px 15px;
+        text-decoration: none;
+        cursor: pointer;
+        color: #fff;
+        transition: 0.25s ease-in-out;
+    }
+    .btn button:hover {
+        width: 50%;
+        border-radius: 10px; 
+        background-color: #d7f8fd;
+        border: none;
+        color: black;
+        box-shadow: #4AA8B7 2px 2px;
+        margin: 1.2rem 1.2rem;
+        padding: 10px 15px;
+        cursor: pointer;
+        transform: scale(1.1);
+    }
+
+
+
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal-content {
+        background-color: #fff;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow:black 1px 1px;
+        width: 250px; /* Set a specific width for the modal content */
+    }
+    .modal-content p{
+        margin: 16px 10px;
+        font-size: 18px;
+    }
+
+    .modal-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin: 20px 10px 0 10px;
+    }
+
+    .confirm-button, .cancel-button {
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: gainsboro 2px 2px;
+        cursor: pointer;
+        transition: 0.25s ease-in-out;
+    }
+    .confirm-button:hover, .cancel-button:hover {
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: gainsboro 2px 2px;
+        cursor: pointer;
+        transform: scale(1.06);
+    }
+
+    .confirm-button {
+        background-color: #56C1D2;
+        color: #fff;
+    }
+
+    .cancel-button {
+        background-color: #FFCD92;
+        color: #000;
+    }
+}

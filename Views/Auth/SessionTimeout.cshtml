@@ -1,0 +1,21 @@
+@{
+    ViewData["Title"] = "Welcome";
+}
+
+<div>
+    <h1>
+        Session Timeout
+    </h1>
+    <p>
+        Your session has timed out. Please log in again.
+    </p>
+
+    <a href="/auth">Login</a>
+</div>
+
+
+@section Scripts {
+    <script>
+        document.cookie = "accessToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    </script>
+}

@@ -1,7 +1,7 @@
 # WebApplicationProject
 Year 2 Project วิชา WEB APPLICATION DEVELOPMENT PROJECT
 ```
-My roll in this project : Front-end Dev
+My roll in this project : Front-end Dev and UX/UI design
 ```
 ![IMG](https://github.com/Morninguoou/WebApplicationProject/blob/main/Presentation/img1.jpg)
 ![IMG](https://github.com/Morninguoou/WebApplicationProject/blob/main/Presentation/img2.jpg)
